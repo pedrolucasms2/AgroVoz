@@ -23,11 +23,10 @@ app.add_middleware(
 # Incluir rotas da API
 app.include_router(router, prefix="/api/v1")
 
-# Endpoint básico de health check
 @app.get("/")
 async def root():
     return {
-        "message": "AgroVoz API está funcionando!",
+        "message": "API Online",
         "version": "1.0.0",
         "status": "online"
     }
@@ -36,7 +35,6 @@ async def root():
 async def health_check():
     return {"status": "healthy", "database": "connected"}
 
-# Inicializar tabelas do banco na startup
 @app.on_event("startup")
 async def startup_event():
     print("Iniciando AgroVoz API...")

@@ -71,7 +71,6 @@ class ProcessadorNLPRural:
         texto = texto.lower().strip()
         
         # Remover acentos desnecessários para matching
-        # (mas manter o texto original para display)
         
         # Normalizar números
         texto = re.sub(r'(\d+)\s*mil', r'\1000', texto)
@@ -151,7 +150,7 @@ class ProcessadorNLPRural:
             except ValueError:
                 pass
         
-        # Segundo tentar padrão por contexto (por, custou, etc)
+        # Segundo tentar padrão por contexto 
         match = re.search(self.patterns['valor_contexto'], texto)
         if match:
             valor_str = match.group(1).replace('.', '').replace(',', '.')

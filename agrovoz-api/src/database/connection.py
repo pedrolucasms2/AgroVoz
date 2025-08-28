@@ -8,7 +8,7 @@ from typing import Generator
 # URL do banco de dados (Railway PostgreSQL ou SQLite local)
 DATABASE_URL = os.getenv(
     "DATABASE_URL", 
-    "sqlite:///./agrovoz.db"  # Fallback para desenvolvimento local
+    "sqlite:///./agrovoz.db"  
 )
 
 # Configurar engine do SQLAlchemy
@@ -36,9 +36,9 @@ def create_tables():
     """Criar todas as tabelas no banco"""
     try:
         Base.metadata.create_all(bind=engine)
-        print("✅ Tabelas criadas com sucesso!")
+        print("Tabelas criadas com sucesso!")
     except Exception as e:
-        print(f"❌ Erro ao criar tabelas: {e}")
+        print(f"Erro ao criar tabelas: {e}")
 
 def get_db() -> Generator[Session, None, None]:
     """Dependency para obter sessão do banco"""
